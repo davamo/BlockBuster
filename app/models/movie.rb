@@ -1,3 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :rentals
+  def to_s
+    self.name
+  end
 end

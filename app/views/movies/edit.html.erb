@@ -1,12 +1,9 @@
-<%= form_for @movie do |f| %>
-  <!-- Otros campos de edición de la película -->
+<h1>Editing client</h1>
 
-  <div class="field">
-    <%= f.label :customer_id %>
-    <%= f.collection_select :customer_id, Customer.all, :id, :name %>
-  </div>
+<%= render "form", client: @client %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<br>
+
+<div>
+
+</div>

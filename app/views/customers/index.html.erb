@@ -1,8 +1,8 @@
+<%= link_to '+ Cliente', new_customer_path, class: 'btn btn-success' %>
 <table>
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Película Arrendada</th>
     </tr>
   </thead>
   <tbody>
@@ -10,11 +10,7 @@
       <tr>
         <td><%= customer.name %></td>
         <td>
-          <% if customer.movies.present? %>
-            Película arrendada
-          <% else %>
-            Sin películas arrendadas
-          <% end %>
+
         </td>
       </tr>
     <% end %>

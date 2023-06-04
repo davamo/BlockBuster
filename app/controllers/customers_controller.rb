@@ -1,24 +1,37 @@
 class CustomersController < ApplicationController
 
   def index
-    @customers = Customer.includes(:movies).all
+    @customers = Customer.all
   end
 
-  def rent_movies
+  def show
     @customer = Customer.find(params[:id])
-    @movies = Movie.where(rented: false) # Obtener películas no arrendadas
   end
 
-  def update
-    @customer = Customer.find(params[:id])
+  def new
+    @customer = Customer.new
+  end
 
-    if @customer.update(customer_params)
-      # Marcar las películas seleccionadas como arrendadas
-      Movie.where(id: params[:customer][:movie_ids]).update_all(rented: true)
-      redirect_to @customer, notice: 'Movies rented successfully.'
+  def create
+    @customer = Customer.new(customer_params)
+    if @customer.save
+      redirect_to @customer, notice: 'Cliente creado exitosamente.'
     else
-      render :rent_movies
+      render :new
     end
+  end
+
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to customers_url, notice: 'Cliente eliminado exitosamente.'
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name)
   end
 
 

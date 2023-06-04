@@ -1,0 +1,9 @@
+<%= form_with(model: @movie) do |form| %>
+
+  <%= form.label :title, style: "display: block" %>
+  <%= form.text_field :title %>
+
+  <!-- Resto del formulario -->
+
+  <%= form.submit 'Guardar cambios' %>
+<% end %>
