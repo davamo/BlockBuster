@@ -1,4 +1,4 @@
-<h1>Editar Cliente</h1>
+<h1>Editar Customer</h1>
 
 <%= form_with(model: @customer, url: customer_path(@customer), method: :patch) do |form| %>
   <% if @customer.errors.any? %>
@@ -19,6 +19,6 @@
 
   <div class="actions">
     <%= form.submit "Guardar cambios" %>
-    <%= link_to "Cancelar", customer_path(@customer) %>
+    <%= link_to 'Cancelar', customers_path %>
   </div>
 <% end %>

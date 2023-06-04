@@ -4,12 +4,9 @@ class CustomersController < ApplicationController
     @customers = Customer.all
   end
 
-  def show
-    @customer = Customer.find(params[:id])
-  end
-
   def new
     @customer = Customer.new
+    render :edit
   end
 
   def create
@@ -21,19 +18,36 @@ class CustomersController < ApplicationController
     end
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+
+    if @customer.update(customer_params)
+      redirect_to customers_path, notice: 'Cliente actualizado exitosamente.'
+    else
+      render :edit
+    end
+  end
+
+  def show
+    @customer = Customer.find(params[:id])
+  end
 
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    redirect_to customers_url, notice: 'Cliente eliminado exitosamente.'
+
+    redirect_to customers_path, notice: 'Cliente eliminado exitosamente.'
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:name)
+    params.require(:customer).permit(:name, :other_attributes)
   end
-
-
 
 end
