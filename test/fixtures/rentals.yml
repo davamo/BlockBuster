@@ -3,11 +3,11 @@
 one:
   movie: one
   customer: one
-  rented_at: 2023-06-04 00:58:59
-  returned_at: 2023-06-04 00:58:59
+  rented_at: 2023-06-04 01:44:19
+  returned_at: 2023-06-04 01:44:19
 
 two:
   movie: two
   customer: two
-  rented_at: 2023-06-04 00:58:59
-  returned_at: 2023-06-04 00:58:59
+  rented_at: 2023-06-04 01:44:19
+  returned_at: 2023-06-04 01:44:19

@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Película Arrendada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td>
+          <% if customer.movies.present? %>
+            Película arrendada
+          <% else %>
+            Sin películas arrendadas
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
