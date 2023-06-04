@@ -1,0 +1,14 @@
+<h1>Rent Movies</h1>
+
+<p>Select the movies you want to rent:</p>
+
+<%= form_with(model: @customer, url: rentals_path(@customer), method: :patch) do |form| %>
+  <% @movies.each do |movie| %>
+    <div>
+      <%= form.check_box :movie_ids, { multiple: true }, movie.id, nil %>
+      <%= movie.title %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Rent Movies', class: 'btn btn-primary' %>
+<% end %>
