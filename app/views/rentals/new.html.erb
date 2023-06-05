@@ -1,0 +1,29 @@
+<%= form_with(model: @rental, local: true) do |form| %>
+    <% if @rental.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+        <% @rental.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <!-- Rest of the form -->
+
+
+  <div class="form-group">
+    <%= form.label :customer_id, 'Customer' %>
+    <%= form.collection_select :customer_id, @customers, :id, :name, prompt: 'Select customer' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :movie_ids, 'Movies' %>
+  <%= form.collection_select :movie_id, Movie.all, :id, :title, include_blank: true %>
+  </div>
+
+
+
+
+  <%= form.submit 'Create Rental', class: 'btn btn-primary' %>
+<% end %>

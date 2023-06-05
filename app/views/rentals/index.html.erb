@@ -1,14 +1,18 @@
-<h1>Rent Movies</h1>
+    <%= link_to 'New rental', new_rental_path, class: 'btn btn-success' %>
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Películas arrendadas</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @rentals.each do |rental| %>
+      <tr>
+        <td><%= rental.customer.name %></td>
+        <td><%= rental.customer.movies.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>Select the movies you want to rent:</p>
-
-<%= form_with(model: @customer, url: rentals_path(@customer), method: :patch) do |form| %>
-  <% @movies.each do |movie| %>
-    <div>
-      <%= form.check_box :movie_ids, { multiple: true }, movie.id, nil %>
-      <%= movie.title %>
-    </div>
-  <% end %>
-
-  <%= form.submit 'Rent Movies', class: 'btn btn-primary' %>
-<% end %>

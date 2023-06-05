@@ -1,11 +1,10 @@
-class CreateRentals < ActiveRecord::Migration[7.0]
+class CreateRentals < ActiveRecord::Migration[6.0]
   def change
     create_table :rentals do |t|
-      t.references :movie, null: false, foreign_key: true
-      t.references :customer, null: false, foreign_key: true
+      t.integer :movie_id, null: true # Permite valores nulos
+      t.integer :customer_id
       t.datetime :rented_at
       t.datetime :returned_at
-
       t.timestamps
     end
   end

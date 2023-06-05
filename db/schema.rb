@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_04_054419) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_04_213236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_054419) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "disabled"
+  end
+
+  create_table "movies_rentals", id: false, force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "rental_id", null: false
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -33,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_054419) do
     t.datetime "returned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "movie_ids", default: [], array: true
     t.index ["customer_id"], name: "index_rentals_on_customer_id"
     t.index ["movie_id"], name: "index_rentals_on_movie_id"
   end
