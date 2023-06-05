@@ -1,0 +1,22 @@
+<h1>Edit Customer</h1>
+
+<%= form_with model: @customer, url: customer_path(@customer), method: :patch do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <!-- Otros campos de edición del cliente -->
+
+  <h2>Movies</h2>
+  <% @customer.movies.each do |movie| %>
+    <div class="field">
+      <%= form.check_box :movie_ids, { multiple: true, checked: true }, movie.id, nil %>
+      <%= form.label movie.title %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Update Customer" %>
+  </div>
+<% end %>

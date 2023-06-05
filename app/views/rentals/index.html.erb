@@ -1,9 +1,10 @@
-    <%= link_to 'New rental', new_rental_path, class: 'btn btn-success' %>
-<table>
+<div class="text-end">  <%= link_to '+ Rent Movie', new_rental_path, class: 'btn btn-success' %> </div>
+<table class="table">
   <thead>
     <tr>
       <th>Cliente</th>
       <th>Películas arrendadas</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,11 @@
       <tr>
         <td><%= rental.customer.name %></td>
         <td><%= rental.customer.movies.count %></td>
+        <td>
+          <div class="btn-group" role="group">
+              <%= link_to 'Edit', edit_rental_path(rental), class: 'btn btn-primary' %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
